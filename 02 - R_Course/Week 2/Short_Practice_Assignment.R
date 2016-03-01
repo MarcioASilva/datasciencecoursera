@@ -3,10 +3,7 @@ files_full <- list.files(directory, full.names = TRUE)
 
 files_full
 
-pollutantmean <- function(directory, pollutant, filenames) {
-
-
-
+  pollutantmean <- function(directory, pollutant, filenames) {
 }
 
 

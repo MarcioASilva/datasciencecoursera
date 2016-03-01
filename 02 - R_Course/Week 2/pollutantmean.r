@@ -46,7 +46,7 @@ pollutantmean2 <- function(directory, pollutant, id = 1:332) {
       means <- c(means, data$nitrate)
     }
   }
-  mean(means, na.rm = TRUE)
+  mean(means, na.rm = TRUE, nan.rm)
 }
 
 pollutantmean2(directory, "sulfate", files_full)
