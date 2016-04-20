@@ -1,4 +1,3 @@
-#All this does is to return the number of complete sets from any given file...
 complete2 <- function(directory) {
   completeCases <- vector(mode = "integer", length = 0)
   filenames <- list.files(directory, pattern = "*.csv", full.names = TRUE)

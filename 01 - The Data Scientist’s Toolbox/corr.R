@@ -5,11 +5,13 @@ corr <- function(directory, threshold = 0) {
     data <- read.csv(filenames[i])
     ok <- complete.cases(data)
     if(sum(ok) > threshold) {
-      correlations <- c(correlations, 
-                        cor(data$sulfate, 
-                            data$nitrate, 
+      correlations <- c(correlations,
+                        cor(data$sulfate,
+                            data$nitrate,
                             use = "complete.obs"))
     }
   }
   return(correlations)
 }
+
+corr
