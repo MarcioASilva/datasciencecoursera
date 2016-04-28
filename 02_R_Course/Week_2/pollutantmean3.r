@@ -1,4 +1,4 @@
-directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
+ directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
 
 files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
 
