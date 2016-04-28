@@ -1,4 +1,4 @@
-directory <- "/Users/Marcio/Projects/DataScienceCoursera/02-R_Course"
+directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
 
 files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
 
@@ -9,10 +9,10 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   data <- data.frame()
 
   for (i in id){
-    data <- rbind(data, read.csv(files_full[i]), header=T, sep=",")
-  }
+  data <- rbind(data, read.csv(files_full[i]), header=T, sep=",")
+}
 
-  median(data$sulfate, na.rm=TRUE)
+median(data$sulfate, na.rm=TRUE)
 
 }
 
