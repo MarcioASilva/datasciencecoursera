@@ -1,52 +1,26 @@
-directory <- "~/Projects/DataScienceCoursera/02 - R_Course/Week 2"
-files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
+directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
+
+files_full <- list.files(directory, full.names = TRUE)
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
 
-  files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
+    #creates an empty data frame
+    dat <- data.frame()
 
-  data <- data.frame()
+    #loops through the files, rbinding them together
+    for (i in id){
+        dat <- rbind(dat, read.csv(files_full[i]))
+    }
 
-  for (i in id){
-    data <- rbind(data, read.csv(files_full[i]), header=T, sep=",")
-  }
-
-  median(data$sulfate, na.rm=TRUE)
-#   # median <- current_file[!is.na(current_file[, pollutant]), pollutant]
-#   median(!is.na(data$sulfate))
-#   # median <- c(mean_vector, na_removed)
-
-}
-
-# pollutantmean(directory,pollutant, 1:length(files_full))
-# pollutantmean("specdata", "sulfate", 1:10)
-# pollutantmean("specdata", "nitrate", 70:72)
-# pollutantmean("specdata", "nitrate", 23)
-
-
-
-# # for(i in id) {
-#   current_file <- read.csv(file_paths[i], header=T, sep=",")
-#   head(current_file)
-#   pollutant
-#   na_removed <- current_file[!is.na(current_file[, pollutant]), pollutant]
-#   mean_vector <- c(mean_vector, na_removed)
-# # }
-
-#All this does is to return the number of complete sets from any given file...
-pollutantmean2 <- function(directory, pollutant, id = 1:332) {
-  means <- NA
-  filenames <- list.files(directory, pattern = "*.csv", full.names = TRUE)
-  for(i in id) {
-    data <- read.csv(filenames[i])
+    means   <- NA
     if(pollutant == "sulfate") {
-      means <- c(means, data$sulfate)
+        means <- round(mean(dat[, "sulfate"], na.rm=TRUE), digits = 3)
     }
-    else {
-      means <- c(means, data$nitrate)
+    else{
+        means <- round(mean(dat[, "nitrate"], na.rm=TRUE), digits = 3)
     }
-  }
-  mean(means, na.rm = TRUE, nan.rm)
 }
 
-pollutantmean2(directory, "sulfate", files_full)
+pollutantmean(directory, "sulfate", 1:10) == 4.064
+pollutantmean(directory, "nitrate", 70:72) == 1.706
+pollutantmean(directory, "nitrate", 23) == 1.281

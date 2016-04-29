@@ -1,10 +1,15 @@
- directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
+setwd("~/Projects/DataScienceCoursera/02_R_Course/Week_2")
 
-files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
+files_full <- list.files(full.names = TRUE, pattern = "*.csv")
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
 
-  files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
+  # set working directory
+    if(grep("specdata", directory) == 1) {
+        directory <- ("./specdata/")
+    }
+
+    files_full <- list.files(directory, full.names = TRUE, pattern = "*.csv")
 
   data <- data.frame()
 
@@ -12,8 +17,8 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   data <- rbind(data, read.csv(files_full[i]), header=T, sep=",")
 }
 
-median(data$sulfate, na.rm=TRUE)
+  median(data$pollutant, na.rm=TRUE)
 
 }
 
-pollutantmean(directory, "sulfate", files_full)
+pollutantmean(specdata, "sulfate", files_full)
