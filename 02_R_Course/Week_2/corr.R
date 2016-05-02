@@ -1,29 +1,41 @@
+directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
+files_full <- list.files(directory, full.names = TRUE)
+
 corr <- function(directory, threshold = 0) {
-  ## 'directory' is a character vector of length 1 indicating
-  ## the location of the CSV files
 
-  ## 'threshold' is a numeric vector of length 1 indicating the
-  ## number of completely observed observations (on all
-  ## variables) required to compute the correlation between
-  ## nitrate and sulfate; the default is 0
 
-  ## Return a numeric vector of correlations
-  ## NOTE: Do not round the result!total<-numeric()
-
-  directory <- "./data/specdata/"
-
-  files <- list.files( path = directory )
-
-  cr <- c()
-
-  for(f in 1:length(files)){
-    data <- read.csv( paste(directory, "/", files[f], sep="") )
-    data <- data[complete.cases(data),]
-    if ( nrow(data) > threshold ) {
-      cr <- c(cr, cor(data$sulfate, data$nitrate) ) # append corralations
-    }
-  }
-
-  return( cr )
+  cor(x, y)
 
 }
+
+complete <- function(directory, id = 1:332) {
+
+  completeCases <- data.frame()
+
+  #loops through the files, rbinding them together
+  for (i in id){
+    print(sum(complete.cases(read.csv(files_full[i]))))
+    completeCases <- c(completeCases)
+  }
+
+}
+
+cr <- corr(directory, 150)
+head(cr)
+
+# summary(cr)
+
+# cr <- corr(directory, 400)
+# head(cr)
+
+# summary(cr)
+
+# cr <- corr(directory, 5000)
+# summary(cr)
+
+# length(cr)
+
+# cr <- corr(directory)
+# summary(cr)
+
+# length(cr)

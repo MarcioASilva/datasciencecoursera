@@ -1,10 +1,19 @@
-complete2 <- function(directory) {
-  completeCases <- vector(mode = "integer", length = 0)
-  filenames <- list.files(directory, pattern = "*.csv", full.names = TRUE)
-  for(i in id) {
-    data <- read.csv(filenames[i])
-    ok <- complete.cases(data)
-    completeCases <- c(completeCases, sum(ok))
+directory <- "~/Projects/DataScienceCoursera/02_R_Course/Week_2/specdata"
+files_full <- list.files(directory, full.names = TRUE)
+
+complete <- function(directory, id = 1:332) {
+
+  completeCases <- data.frame()
+
+  #loops through the files, rbinding them together
+  for (i in id){
+    print(sum(complete.cases(read.csv(files_full[i]))))
+    completeCases <- c(completeCases)
   }
-  return(data.frame(id = id, nobs = completeCases))
+
 }
+
+complete(directory, 1)
+complete(directory, c(2, 4, 8, 10, 12))
+complete(directory, 30:25)
+complete(directory, 3)
