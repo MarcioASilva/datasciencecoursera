@@ -20,6 +20,17 @@ pollutantmean   <- function(directory, pollutant, id = 1:332) {
     }
 }
 
-pollutantmean(directory, "sulfate", 1:10)   == 4.064
-pollutantmean(directory, "nitrate", 70:72)  == 1.706
-pollutantmean(directory, "nitrate", 23)     == 1.281
+# result   <-  pollutantmean(directory, "sulfate", 1:10)
+# result
+
+# result   <-  pollutantmean(directory, "nitrate", 70:72)
+# result
+
+# result   <-  pollutantmean(directory, "nitrate", 23)
+# result
+
+# result   <-  pollutantmean(directory, "sulfate", 34)
+# result
+
+result   <-  pollutantmean(directory, "nitrate")
+result
